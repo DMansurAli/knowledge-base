@@ -1,0 +1,137 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+## ----------------------
+## General .NET
+## ----------------------
+bin/
+obj/
+out/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+## ----------------------
+## Visual Studio / Rider / VS Code
+## ----------------------
+.vs/
+.idea/
+.vscode/
+*.sln.docstates
+
+## ----------------------
+## NuGet
+## ----------------------
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## ----------------------
+## Build Results
+## ----------------------
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+
+## ----------------------
+## MAUI / Xamarin
+## ----------------------
+
+# Android
+*.apk
+*.aab
+*.ap_ 
+*.dex
+*.class
+*.so
+
+# iOS / MacCatalyst
+*.app
+*.ipa
+*.dSYM/
+*.xcarchive
+
+# Windows
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+
+# Maui generated
+*.maui-cache/
+
+## ----------------------
+## Blazor / Web
+## ----------------------
+wwwroot/dist/
+wwwroot/lib/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+## ----------------------
+## Logs & Temp
+## ----------------------
+*.tmp
+*.temp
+*.swp
+*.bak
+*.orig
+
+## ----------------------
+## OS Files
+## ----------------------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+## ----------------------
+## Test Results
+## ----------------------
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+## ----------------------
+## Secrets / Config
+## ----------------------
+appsettings.Development.json
+secrets.json
+*.pfx
+*.key
+
+## ----------------------
+## Resharper
+## ----------------------
+_ReSharper*/
+*.DotSettings.user
+
+## ----------------------
+## EF Core Migrations (optional)
+## ----------------------
+# Uncomment if you don't want migrations tracked
+# Migrations/
+
+## ----------------------
+## Publish Output
+## ----------------------
+publish/

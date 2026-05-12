@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="RepositoryPattern.API/RepositoryPattern.API.csproj" />
+  <Project Path="RepositoryPattern.Console/RepositoryPattern.Console.csproj" />
+  <Project Path="RepositoryPattern.Core/RepositoryPattern.Core.csproj" />
+</Solution>
