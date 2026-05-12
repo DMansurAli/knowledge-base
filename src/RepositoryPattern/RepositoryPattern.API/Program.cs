@@ -1,12 +1,31 @@
+using RepositoryPattern.Core.Models;
+using RepositoryPattern.Core.Repositories;
+using RepositoryPattern.Core.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddSingleton<IRepository<Wallet>, WalletRepository>();
+
+builder.Services.AddSingleton<WalletService>();
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -20,4 +39,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+using (var scope = app.Services.CreateScope())
+{
+    var service = scope.ServiceProvider.GetRequiredService<WalletService>();
+
+    service.SeedData();
+}
 app.Run();

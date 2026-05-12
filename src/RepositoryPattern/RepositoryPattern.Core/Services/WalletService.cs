@@ -49,10 +49,4 @@ public class WalletService
     {
         _repository.Add(wallet);
     }
-
-    // DELETE WALLET BY ID
-    public void Delete(int id)
-    {
-        _repository.Delete(id);
-    }
 }
