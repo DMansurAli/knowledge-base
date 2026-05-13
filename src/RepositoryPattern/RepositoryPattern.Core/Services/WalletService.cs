@@ -5,7 +5,31 @@ namespace RepositoryPattern.Core.Services;
 
 public class WalletService
 {
-    private readonly IRepository<Wallet> _repository;
+    private readonly IWalletRepository _repository;
+
+    public WalletService(IWalletRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public void CreateWallet(Wallet wallet)
+    {
+        _repository.Add(wallet);
+    }
+
+    public IEnumerable<Wallet> GetWallets()
+    {
+        return _repository.GetAll();
+    }
+
+    public Wallet? GetWalletById(int id)
+    {
+        return _repository.GetById(id);
+    }
+
+    
+
+    /*private readonly IRepository<Wallet> _repository;
 
     public WalletService(IRepository<Wallet> repository)
     {
@@ -48,5 +72,5 @@ public class WalletService
     public void Create(Wallet wallet)
     {
         _repository.Add(wallet);
-    }
+    }*/
 }

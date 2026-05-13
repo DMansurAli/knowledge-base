@@ -3,8 +3,6 @@ using RepositoryPattern.Core.Repositories;
 using RepositoryPattern.Core.Services;
 
 var service = new WalletService(new WalletRepository());
-service.SeedData();
-
 
 bool running = true;
 while (running)
@@ -15,7 +13,7 @@ while (running)
     switch (choice)
     {
         case "1": // READ ALL
-            foreach (var w in service.Get())
+            foreach (var w in service.GetWallets())
                 Console.WriteLine($"[{w.Id}] {w.Name} - {w.Balance:C}");
             break;
 
@@ -23,7 +21,7 @@ while (running)
             Console.Write("Enter ID: ");
             if (int.TryParse(Console.ReadLine(), out int id))
             {
-                var wallet = service.GetById(id);
+                var wallet = service.GetWalletById(id);
                 Console.WriteLine(wallet != null ? $"Found: {wallet.Name}" : "Not Found");
             }
             break;
@@ -31,7 +29,7 @@ while (running)
         case "3": // CREATE
             Console.Write("Enter Name: ");
             var name = Console.ReadLine();
-            service.Create(new Wallet { Name = name, Currency = "USD", Balance = 0 });
+            service.CreateWallet(new Wallet { Name = name, Currency = "USD", Balance = 0 });
             Console.WriteLine("Wallet Created.");
             break;
 

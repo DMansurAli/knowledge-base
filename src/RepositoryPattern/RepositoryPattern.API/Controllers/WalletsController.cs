@@ -18,13 +18,13 @@ namespace RepositoryPattern.API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_walletService.Get());
+            return Ok(_walletService.GetWallets());
         }
 
         [HttpGet("{id:int}")]
         public IActionResult GetById(int id)
         {
-            var wallet = _walletService.GetById(id);
+            var wallet = _walletService.GetWalletById(id);
 
             if (wallet == null)
                 return NotFound();
@@ -35,7 +35,7 @@ namespace RepositoryPattern.API.Controllers
         [HttpPost]
         public IActionResult Create(Wallet wallet)
         {
-            _walletService.Create(wallet);
+            _walletService.CreateWallet(wallet);
 
             return Ok(wallet);
         }

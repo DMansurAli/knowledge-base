@@ -2,7 +2,7 @@
 
 namespace RepositoryPattern.Core.Repositories;
 
-public class WalletRepository : IRepository<Wallet>
+public class WalletRepository : IWalletRepository
 {
     private readonly List<Wallet> _wallets = new();
 
@@ -13,29 +13,32 @@ public class WalletRepository : IRepository<Wallet>
 
     public Wallet? GetById(int id)
     {
-        return _wallets.FirstOrDefault(p => p.Id == id);
+        return _wallets
+            .FirstOrDefault(w => w.Id == id);
     }
 
-    public void Add(Wallet entity)
+    public void Add(Wallet wallet)
     {
-        _wallets.Add(entity);
+        _wallets.Add(wallet);
     }
 
-    public void Update(Wallet entity)
+    public void Update(Wallet wallet)
     {
-        var wallet = _wallets.FirstOrDefault(p => p.Id == entity.Id);
+        var existingWallet = _wallets
+            .FirstOrDefault(w => w.Id == wallet.Id);
 
-        if (wallet is not null)
+        if (existingWallet is not null)
         {
-            wallet.Name = entity.Name;
-            wallet.Currency = entity.Currency;
-            wallet.Balance = entity.Balance;
+            existingWallet.Name = wallet.Name;
+            existingWallet.Currency = wallet.Currency;
+            existingWallet.Balance = wallet.Balance;
         }
     }
 
     public void Delete(int id)
     {
-        var wallet = _wallets.FirstOrDefault(p => p.Id == id);
+        var wallet = _wallets
+            .FirstOrDefault(w => w.Id == id);
 
         if (wallet is not null)
         {

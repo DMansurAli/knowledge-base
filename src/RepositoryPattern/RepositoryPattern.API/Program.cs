@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddSingleton<IRepository<Wallet>, WalletRepository>();
+builder.Services.AddSingleton<IWalletRepository, WalletRepository>();
 
 builder.Services.AddSingleton<WalletService>();
 
@@ -39,10 +39,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-using (var scope = app.Services.CreateScope())
-{
-    var service = scope.ServiceProvider.GetRequiredService<WalletService>();
-
-    service.SeedData();
-}
 app.Run();
